@@ -1,0 +1,11 @@
+{
+    "cSpell.words": [
+        "addopts",
+        "minversion",
+        "portscan",
+        "testpaths"
+    ],
+    "flake8.args": [
+        "--config=pyproject.toml"
+    ]
+}

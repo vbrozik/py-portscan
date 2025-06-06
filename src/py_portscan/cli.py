@@ -6,8 +6,8 @@ import argparse
 import sys
 from typing import Sequence
 
-import py_portscan.input
-import py_portscan.portscan
+from py_portscan import data_input
+from py_portscan import portscan
 
 
 def parse_arguments(arguments: Sequence[str]) -> argparse.Namespace:
@@ -59,11 +59,11 @@ def main(arguments: Sequence[str] | None = None) -> None:
     parsed_arguments = parse_arguments(arguments)
     validate_arguments(parsed_arguments)
 
-    targets = py_portscan.input.read_input_csv(parsed_arguments.targets_file)
+    targets = data_input.read_input_csv(parsed_arguments.targets_file)
 
-    print(",".join(py_portscan.portscan.ScanResult.get_csv_header()))
-    scan_function = py_portscan.portscan.scan_targets_parallel
-    # scan_function = py_portscan.scan.scan_targets
+    print(",".join(portscan.ScanResult.get_csv_header()))
+    scan_function = portscan.scan_targets_parallel
+    # scan_function = portscan.scan_targets
     for result in scan_function(targets):
         print(",".join(result.to_csv_row()))
 

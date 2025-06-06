@@ -6,7 +6,7 @@ import socket
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Iterable, Iterator, NamedTuple
 
-from py_portscan.input import ScanTarget
+from py_portscan.data_input import ScanTarget
 
 
 class ScanResult(NamedTuple):
